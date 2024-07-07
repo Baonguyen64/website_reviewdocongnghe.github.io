@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lí Sản Phẩm Công Nghệ</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link rel="stylesheet" href="btl.css">
+    <style>
+        /* CSS inline styles for marquee effect */
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: marquee 15s linear infinite;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Quản Lí Sản Phẩm Công Nghệ</h1>        
+        <ul>
+            <li><a href="trangchu.html">Trang Chủ</a></li>
+            <li><a href="review.html">Review Sản Phẩm
+                <ul class="reviewsp">
+                    <li><a href="dienthoai.html">Smartphones</a></li>
+                    <li><a href="laptop.html">Laptops</a></li>
+                    <li><a href="headphones.html">Headphones</a></li>
+                </ul>
+            </a></li>
+            <li><a href="tintuc.html">Tin Tức</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+            <li><a href="#">Đăng bài viết/sản phẩm
+                <ul>
+                    <li><a href="baiviet.html">Đăng bài viết</a></li>
+                    <li><a href="sanpham.html">Đăng sản phẩm</a></li>    
+                </ul>
+            <li><a href="modau.html">Đăng Xuất</a></li>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="sidebar-menu">
+            <h2>Danh mục sản phẩm</h2>
+            <ul>
+                <li><a href="SPbanchay.html">Sản Phẩm Bán Chạy</a></li>
+                <li><a href="SPmoi.html">Sản Phẩm Mới</a></li>
+                <li><a href="SmartPhone.html">Smartphones</a></li>
+                <li><a href="Laptops.html">Laptops</a></li>
+                <li><a href="headphones.html">Headphones</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="marquee">
+            </div>
+            <div class="section-title">
+                <h2>Các bài viết và sản phẩm mới</h2>
+            </div>
+            <div class="reviews">            
+                <div id="sanpham-list"></div>
+                <script>
+                    var products = [];
+
+                    function loadSanPham() {
+                        $.ajax({
+                            url: 'http://localhost:3000/sanpham',
+                            type: 'GET',
+                            success: function(response) {
+                                products = response; // Lưu dữ liệu sản phẩm vào biến toàn cục
+                                displayProducts(products);
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(xhr.responseText);
+                                alert('Không thể tải danh sách sản phẩm!');
+                            }
+                        });
+                    }
+
+                    function displayProducts(products) {
+                        var sanphamList = $('#sanpham-list');
+                        sanphamList.empty();
+                        products.forEach(function(sp) {
+                            var imgTag = sp.hinhAnh ? '<img src="' + sp.hinhAnh + '" alt="Hình ảnh">' : '';
+                            var viewLink = sp.linkBaiViet ? '<a href="' + sp.linkBaiViet + '"><button>Xem Bài Viết</button></a>' : '';
+                            var productLink = sp.linkSanPham ? '<a href="' + sp.linkSanPham + '"><button>Xem Bài Viết</button></a>' : '';
+                            sanphamList.append(
+                                '<div class="product-item">' +
+                                '<p><strong>ID:</strong> ' + sp.id + '</p>' +
+                                '<p><strong>Sản Phẩm:</strong> ' + sp.Sanpham + '</p>' +
+                                '<p><strong>Mã Sản Phẩm:</strong> ' + sp.maSP + '</p>' +
+                                '<p><strong>Ngày Sản Xuất:</strong> ' + sp.ngaySX + '</p>' +
+                                '<p><strong>Mô tả:</strong> ' + sp.mota + '</p>' +
+                                '<p><strong>Giá:</strong> ' + sp.gia + ' vnđ' + '</p>' +
+                                imgTag +
+                                viewLink +
+                                productLink +
+                                '</div>'
+                            );
+                        });
+
+                        // Xử lý sự kiện khi nhấp vào nút "Xem bài viết"
+                        $('#sanpham-list').on('click', 'a[href^="http"]', function(event) {
+                            event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+                            var url = $(this).attr('href'); // Lấy đường dẫn từ thuộc tính href của liên kết
+                            window.open(url, '_blank'); // Mở liên kết trong cửa sổ mới
+                        });
+                    }
+
+                    $(document).ready(function() {
+                        loadSanPham();
+                    });
+                </script>  
+
+                <!-- Thêm sản phẩm -->
+
+                <div class="section-title">
+                    <h2>Các bài viết về sản phẩm nổi bật</h2>
+                </div>
+                <div id="baiviet-list"></div>
+                <script>
+                    function formatDateTime(dateTime) {
+                        return moment(dateTime).format('DD/MM/YYYY');
+                    }
+
+                    function loadBaiviet() {
+                        $.ajax({
+                            url: 'http://localhost:3000/baiviet',
+                            type: 'GET',
+                            success: function(response) {
+                                var baivietList = $('#baiviet-list');
+                                baivietList.empty(); // Xóa nội dung hiện tại
+
+                                response.forEach(function(baiviet) {
+                                    var formattedDate = formatDateTime(baiviet.ngaydang);
+
+                                    var htmlString = 
+                                        '<div class="baiviet-item">' +
+                                            '<p><strong>ID:</strong> ' + baiviet.id + '</p>' +
+                                            '<p><strong>Người đăng:</strong> ' + baiviet.nguoidang + '</p>' +
+                                            '<p><strong>Số điện thoại:</strong> ' + baiviet.sdt + '</p>' +
+                                            '<p><strong>Địa chỉ:</strong> ' + baiviet.diachi + '</p>' +
+                                            '<p><strong>Email:</strong> ' + baiviet.email + '</p>' +
+                                            '<p><strong>Tiêu đề:</strong> ' + baiviet.tieude + '</p>' +
+                                            '<p><strong>Nội Dung:</strong> ' + baiviet.noidung + '</p>' +
+                                            '<p><strong>Ngày đăng:</strong> ' + formattedDate + '</p>' +
+                                            (baiviet.Hinhanh ? '<img src="' + baiviet.Hinhanh + '" alt="Hình ảnh" style="max-width: 500px;"><br>' : '') +
+                                            '<a href="chitietbaiviet.html?id=' + baiviet.id + '"><button>Xem bài viết</button></a>' +
+                                        '</div>' +
+                                        '<hr>';
+                                    baivietList.append(htmlString);
+                                });
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(xhr.responseText);
+                                alert('Không thể tải danh sách bài viết!');
+                            }
+                        });
+                    }
+
+                    $(document).ready(function() {
+                        loadBaiviet();
+                    });
+                </script>
+                <script>
+                    $(document).ready(function() {
+                        // Xử lý sự kiện khi người dùng nhấn vào "Đăng xuất"
+                        $('a[href="modau.html"]').click(function(e) {
+                            e.preventDefault(); // Ngăn chặn mặc định hành vi chuyển hướng
+                
+                            // Hiển thị hộp thoại xác nhận
+                            var confirmed = confirm("Bạn có muốn đăng xuất?");
+                
+                            // Nếu người dùng xác nhận đăng xuất
+                            if (confirmed) {
+                                // Thực hiện đăng xuất ở đây, ví dụ chuyển hướng tới trang đăng nhập
+                                window.location.href = 'modau.html';
+                                alert('Bạn đã đăng xuất thành công.');
+                            } else {
+                                // Nếu người dùng không xác nhận đăng xuất
+                                alert('Đã hủy đăng xuất.');
+                            }
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Chào mừng đến với trang web của chúng tôi - Quản Lí Sản Phẩm Công Nghệ</p>
+    </div>
+</body>
+</html>

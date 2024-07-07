@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lí Sản Phẩm Công Nghệ</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+      }
+      .navbar {
+        background-color: #004a82;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .navbar h1 {
+        margin: 0;
+      }
+      .navbar input[type="text"] {
+        padding: 5px;
+        width: 300px;
+      }
+      .navbar ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        justify-content: space-evenly;
+        position: relative; /* Added to position submenus correctly */
+      }
+      .navbar ul li {
+        position: relative;
+      }
+      .navbar ul li a {
+        padding: 5px 20px;
+        color: #fff;
+        text-decoration: none;
+      }
+      .navbar ul li a:hover {
+        color: #ffb8b8;
+        font-weight: bold;
+        background-color: #004a82;
+      }
+      /* Dropdown menu styling */
+      .navbar ul li ul {
+        display: none;
+        position: absolute;
+        background-color: #004a82;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        top: 100%; /* Positions the submenu below the main menu item */
+        left: 0; /* Aligns the submenu to the left edge of the parent item */
+      }
+      .navbar ul li:hover ul {
+        display: block;
+      }
+      .navbar ul li ul li {
+        width: 200px; /* Set the width for dropdown items */
+      }
+      .navbar ul li ul li a {
+        display: block;
+        padding: 10px;
+        color: #fff;
+        text-decoration: none;
+        background-color: #004a82; /* Background color for dropdown items */
+      }
+      .navbar ul li ul li a:hover {
+        background-color: #003b6b; /* Background color on hover */
+        color: #ffb8b8; /* Text color on hover */
+      }
+      .main-content {
+        display: flex;
+        width: 100%;
+      }
+      .sidebar-menu {
+        width: 20%;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+      .sidebar-menu h2 {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+      .sidebar-menu ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar-menu li {
+        margin-bottom: 10px;
+      }
+      .sidebar-menu li a {
+        color: #004a82;
+        text-decoration: none;
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+      }
+      .sidebar-menu li a:hover {
+        text-decoration: underline;
+      }
+      .sidebar-menu li a .fas {
+        margin-right: 10px;
+      }
+      .container {
+        padding: 20px;
+        flex: 1;
+      }
+      .post-header {
+        position: relative;
+      }
+      .header-image {
+        width: 100%;
+        height: auto;
+      }
+      .post-info {
+        padding: 20px;
+      }
+      .category {
+        background: #d32f2f;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 10px 0;
+      }
+      .author-info {
+        display: flex;
+        align-items: center;
+      }
+      .author-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .author-info p {
+        margin: 0;
+        color: #666;
+      }
+      .social-info {
+        margin-top: 10px;
+      }
+      .social-info a {
+        color: #d32f2f;
+        text-decoration: none;
+      }
+      .social-info a:hover {
+        text-decoration: underline;
+      }
+      .post-content {
+        margin-top: 20px;
+      }
+      .post-content img {
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+      }
+      .footer {
+        background-color: #004a82;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      .footer p {
+        margin: 0;
+        color: #fff;
+        text-align: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <h1>Quản Lí Sản Phẩm Công Nghệ</h1>
+      <input type="text" placeholder="Bạn cần tìm sản phẩm..." />
+      <ul>
+        <li>
+          <a href="trangchu.html"><i class="fas fa-home"></i> Trang Chủ</a>
+        </li>
+        <li>
+          <a href="review.html"><i class="fas fa-star"></i> Review Sản Phẩm</a>
+          <ul>
+            <li>
+              <a href="dienthoai.html"
+                ><i class="fas fa-mobile-alt"></i> Smartphones</a
+              >
+            </li>
+            <li>
+              <a href="laptop.html"><i class="fas fa-laptop"></i> Laptops</a>
+            </li>
+            <li>
+              <a href="mtbang.html"
+                ><i class="fas fa-tablet-alt"></i> Tablets</a
+              >
+            </li>
+            <li>
+              <a href="cam.html"><i class="fas fa-camera"></i> Cameras</a>
+            </li>
+            <li>
+              <a href="headphones.html"
+                ><i class="fas fa-headphones"></i> Headphones</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="tintuc.html"><i class="fas fa-newspaper"></i> Tin Tức</a>
+        </li>
+        <li>
+          <a href="lienhe.html"><i class="fas fa-envelope"></i> Liên hệ</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-upload"></i> Đăng bài viết/sản phẩm</a>
+          <ul>
+            <li>
+              <a href="baiviet.html"
+                ><i class="fas fa-pen"></i> Đăng bài viết</a
+              >
+            </li>
+            <li>
+              <a href="sanpham.html"
+                ><i class="fas fa-box"></i> Đăng sản phẩm</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="sidebar-menu">
+        <h2>Danh mục sản phẩm</h2>
+        <ul>
+          <li>
+            <a href="SPbanchay.html"
+              ><i class="fas fa-fire"></i> Sản Phẩm Bán Chạy</a
+            >
+          </li>
+          <li>
+            <a href="SPmoi.html"><i class="fas fa-tags"></i> Sản Phẩm Mới</a>
+          </li>
+          <li>
+            <a href="SmartPhone.html"
+              ><i class="fas fa-mobile-alt"></i> Smartphones</a
+            >
+          </li>
+          <li>
+            <a href="Laptop.html"><i class="fas fa-laptop"></i> Laptops</a>
+          </li>
+          <li>
+            <a href="Tablets.html"><i class="fas fa-tablet-alt"></i> Tablets</a>
+          </li>
+          <li>
+            <a href="Cameras.html"><i class="fas fa-camera"></i> Cameras</a>
+          </li>
+          <li>
+            <a href="Tainghe.html"
+              ><i class="fas fa-headphones"></i> Headphones</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="container">
+        <div class="post-header">
+          <div class="post-info">
+            <span class="category">Đánh giá</span>
+            <h1>
+              Đánh giá Galaxy Z Flip4 sau 3 năm sử dụng: "Kiệt tác công nghệ"
+              một thời cũng khó chiến thắng được thời gian!
+            </h1>
+            <div class="author-info">
+              <img
+                src="./image/bao.webp"
+                alt="Nguyễn Hữu Bảo"
+                class="author-image"
+              />
+              <div>
+                <p>Nguyễn Hữu Bảo</p>
+                <p>Ngày đăng: 01/07/2024 - Cập nhật: 02/07/2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="post-content">
+          <p>
+            <strong>Samsung Galaxy Z Flip4</strong> từng được xem là đỉnh cao
+            của <a href="#">công nghệ</a> thế nhưng chỉ mới sau vài năm ra mắt,
+            máy đã không còn được nhiều người chú ý đến khi có khá nhiều nhược
+            điểm.
+          </p>
+          <p>
+            Sau một thời gian dài trải nghiệm chiếc Galaxy Z Flip4, mình nhận ra
+            rằng, giữa vòng xoáy của thời gian và công nghệ liên tục kéo dài,
+            máy hiện đã không còn giữ được sự sắc sảo, linh hoạt như trước.
+            Chiếc smartphone từng làm mình mê mẩn bởi thiết kế độc đáo và hiệu
+            năng mạnh mẽ, nay đã dần xuống cấp, không còn phù hợp với nhu cầu sử
+            dụng hiện tại của mình.
+          </p>
+          <img src="danh-gia-galaxy-z-flip-3-24.jpg" alt="Galaxy Z Flip4" />
+          <p>
+            Ở bài viết này, mình muốn chia sẻ với bạn đọc những trải nghiệm đầy
+            thực tế này. Điểm mạnh, điểm yếu, những thay đổi theo thời gian đều
+            sẽ được đề cập một cách đầy đủ trong bài viết dưới đây. Hy vọng
+            những điều mình chia sẻ sẽ giúp bạn có cái nhìn tổng quan hơn về
+            chiếc smartphone này.
+          </p>
+          <img
+            src="danh-gia-galaxy-z-flip-3-23.jpg"
+            alt="Galaxy Z Flip4 in hand"
+          />
+          <p>
+            Đầu tiên, về thiết kế, chiếc Galaxy Z Flip4 vẫn giữ được nét độc đáo
+            với cơ chế gập ngang. Tuy nhiên, lớp bản lề và cơ chế gập mở dường
+            như đã xuống cấp, không còn mượt mà như những ngày đầu. Điều này có
+            thể ảnh hưởng đến trải nghiệm người dùng, đặc biệt là với những ai
+            thường xuyên phải mở gập thiết bị.
+          </p>
+          <img
+            src="danh-gia-galaxy-z-flip-3-1.jpg"
+            alt="Galaxy Z Flip4 design"
+          />
+          <p>
+            Về hiệu năng, Galaxy Z Flip4 vẫn xử lý tốt các tác vụ hàng ngày như
+            lướt web, xem phim hay chơi game nhẹ. Tuy nhiên, với các tác vụ nặng
+            hơn như chơi game 3D hoặc chỉnh sửa video, máy bắt đầu gặp khó khăn,
+            đặc biệt là khi nhiệt độ máy tăng cao sau một thời gian dài sử dụng.
+          </p>
+          <img
+            src="danh-gia-galaxy-z-flip-3-33.jpg"
+            alt="Galaxy Z Flip4 performance"
+          />
+          <p>
+            Pin của Galaxy Z Flip4 cũng là một điểm yếu lớn. Với dung lượng pin
+            không quá lớn, máy khó có thể trụ được cả ngày với những người dùng
+            có nhu cầu cao. Việc phải sạc pin nhiều lần trong ngày có thể khiến
+            trải nghiệm sử dụng trở nên phiền phức.
+          </p>
+          <img
+            src="danh-gia-galaxy-z-flip-3-34.jpg"
+            alt="Galaxy Z Flip4 battery"
+          />
+          <p>
+            Bên cạnh đó, camera của Galaxy Z Flip4 mặc dù vẫn cho ra những bức
+            ảnh chất lượng, nhưng không thể so sánh với các dòng flagship mới
+            hiện nay. Điều này là dễ hiểu khi công nghệ camera không ngừng phát
+            triển và cải tiến.
+          </p>
+          <img
+            src="danh-gia-galaxy-z-flip-3-36.jpg"
+            alt="Galaxy Z Flip4 camera"
+          />
+          <p>
+            Tóm lại, Galaxy Z Flip4 là một sản phẩm công nghệ đáng chú ý trong
+            quá khứ, nhưng với sự phát triển không ngừng của công nghệ, máy đã
+            không còn giữ được vị thế của mình. Nếu bạn đang cân nhắc mua một
+            chiếc smartphone gập, hãy cân nhắc kỹ về nhu cầu và những nhược điểm
+            của máy trước khi quyết định.
+          </p>
+          <img
+            src="danh-gia-galaxy-z-flip-3-39.jpg"
+            alt="Galaxy Z Flip4 conclusion"
+          />
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p>Review Sản Phẩm Công Nghệ</p>
+    </footer>
+  </body>
+</html>

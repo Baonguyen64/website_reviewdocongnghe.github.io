@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lí Sản Phẩm Công Nghệ</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link rel="stylesheet" href="btl.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Quản Lí Sản Phẩm Công Nghệ</h1>        
+        <ul>
+            <li><a href="trangchu.html">Trang Chủ</a></li>
+            <li><a href="review.html">Review Sản Phẩm
+                <ul class="reviewsp">
+                    <li><a href="dienthoai.html">Smartphones</a></li>
+                    <li><a href="laptop.html">Laptops</a></li>
+                    <li><a href="headphones.html">Headphones</a></li>
+                </ul>
+            </a></li>
+            <li><a href="tintuc.html">Tin Tức</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+            <li><a href="#">Đăng bài viết/sản phẩm
+                <ul>
+                    <li><a href="baiviet.html">Đăng bài viết</a></li>
+                    <li><a href="sanpham.html">Đăng sản phẩm</a></li>    
+                </ul>
+            <li><a href="modau.html">Đăng xuất</a></li>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="sidebar-menu">
+            <h2>Danh mục sản phẩm</h2>
+            <ul>
+                <li><a href="SPbanchay.html">Sản Phẩm Bán Chạy</a></li>
+                <li><a href="SPmoi.html">Sản Phẩm Mới</a></li>
+                <li><a href="SmartPhone.html">Smartphones</a></li>
+                <li><a href="Laptops.html">Laptops</a></li>
+                <li><a href="Headphone.html">Headphones</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="section-title"><h2>Review một số sản phẩm nổi bật</h2></div>
+            <div class="reviews">
+                <div id="sanpham-list"></div>
+            </div>
+            <div id="baiviet-list"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Chào mừng đến với trang web của chúng tôi - Quản Lí Sản Phẩm Công Nghệ</p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            loadSanPham();
+        });
+
+        function loadSanPham() {
+            $.ajax({
+                url: 'http://localhost:3000/dienthoai',
+                type: 'GET',
+                success: function(response) {
+                    var sanphamList = $('#sanpham-list');
+                    sanphamList.empty();
+
+                    response.forEach(function(sp) {
+                        var imgTag = sp.hinhAnh ? '<img src="' + sp.hinhAnh + '" alt="Hình ảnh">' : '';
+                        var viewLink = '<a href="' + sp.id + '"></a>';
+                        var sanphamLink = sp.linkSanPham ? '<a href="' + sp.linkSanPham + '"><button>Xem Bài Viết</button></a>' : '';
+
+                        sanphamList.append(
+                            '<div class="product-item">' +
+                            '<p><strong>ID:</strong> ' + sp.id + '</p>' +
+                            '<p><strong>Sản Phẩm:</strong> ' + sp.Sanpham + '</p>' +
+                            '<p><strong>Mã Sản Phẩm:</strong> ' + sp.maSP + '</p>' +
+                            '<p><strong>Ngày Sản Xuất:</strong> ' + sp.ngaySX + '</p>' +
+                            '<p><strong>Mô tả:</strong> ' + sp.mota + '</p>' +
+                            '<p><strong>Giá:</strong> ' + sp.gia + ' vnđ</p>' +
+                            imgTag +
+                            viewLink +
+                            sanphamLink +
+                            '</div>'
+                        );
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert('Không thể tải danh sách sản phẩm!');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

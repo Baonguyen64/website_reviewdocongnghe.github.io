@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lí Sản Phẩm Công Nghệ</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+      }
+      .navbar {
+        background-color: #004a82;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .navbar h1 {
+        margin: 0;
+      }
+      .navbar input[type="text"] {
+        padding: 5px;
+        width: 300px;
+      }
+      .navbar ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        justify-content: space-evenly;
+        position: relative;
+      }
+      .navbar ul li {
+        position: relative;
+      }
+      .navbar ul li a {
+        padding: 5px 20px;
+        color: #fff;
+        text-decoration: none;
+      }
+      .navbar ul li a:hover {
+        color: #ffb8b8;
+        font-weight: bold;
+        background-color: #004a82;
+      }
+      .navbar ul li ul {
+        display: none;
+        position: absolute;
+        background-color: #004a82;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        top: 100%;
+        left: 0;
+      }
+      .navbar ul li:hover ul {
+        display: block;
+      }
+      .navbar ul li ul li {
+        width: 200px;
+      }
+      .navbar ul li ul li a {
+        display: block;
+        padding: 10px;
+        color: #fff;
+        text-decoration: none;
+        background-color: #004a82;
+      }
+      .navbar ul li ul li a:hover {
+        background-color: #003b6b;
+        color: #ffb8b8;
+      }
+      .main-content {
+        display: flex;
+        width: 100%;
+      }
+      .sidebar-menu {
+        width: 20%;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+      .sidebar-menu h2 {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+      .sidebar-menu ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar-menu li {
+        margin-bottom: 10px;
+      }
+      .sidebar-menu li a {
+        color: #004a82;
+        text-decoration: none;
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+      }
+      .sidebar-menu li a:hover {
+        text-decoration: underline;
+      }
+      .sidebar-menu li a .fas {
+        margin-right: 10px;
+      }
+      .container {
+        padding: 20px;
+        flex: 1;
+      }
+      .post-header {
+        position: relative;
+      }
+      .header-image {
+        width: 100%;
+        height: auto;
+      }
+      .post-info {
+        padding: 20px;
+      }
+      .category {
+        background: #d32f2f;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 10px 0;
+      }
+      .author-info {
+        display: flex;
+        align-items: center;
+      }
+      .author-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .author-info p {
+        margin: 0;
+        color: #666;
+      }
+      .social-info {
+        margin-top: 10px;
+      }
+      .social-info a {
+        color: #d32f2f;
+        text-decoration: none;
+      }
+      .social-info a:hover {
+        text-decoration: underline;
+      }
+      .post-content {
+        margin-top: 20px;
+      }
+      .post-content img {
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+      }
+      .footer {
+        background-color: #004a82;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      .footer p {
+        margin: 0;
+        color: #fff;
+        text-align: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <h1>Quản Lí Sản Phẩm Công Nghệ</h1>
+      <input type="text" placeholder="Bạn cần tìm sản phẩm..." />
+      <ul>
+        <li>
+          <a href="trangchu.html"><i class="fas fa-home"></i> Trang Chủ</a>
+        </li>
+        <li>
+          <a href="review.html"><i class="fas fa-star"></i> Review Sản Phẩm</a>
+          <ul>
+            <li>
+              <a href="dienthoai.html"
+                ><i class="fas fa-mobile-alt"></i> Smartphones</a
+              >
+            </li>
+            <li>
+              <a href="laptop.html"><i class="fas fa-laptop"></i> Laptops</a>
+            </li>
+            <li>
+              <a href="mtbang.html"
+                ><i class="fas fa-tablet-alt"></i> Tablets</a
+              >
+            </li>
+            <li>
+              <a href="cam.html"><i class="fas fa-camera"></i> Cameras</a>
+            </li>
+            <li>
+              <a href="headphones.html"
+                ><i class="fas fa-headphones"></i> Headphones</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="tintuc.html"><i class="fas fa-newspaper"></i> Tin Tức</a>
+        </li>
+        <li>
+          <a href="lienhe.html"><i class="fas fa-envelope"></i> Liên hệ</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-upload"></i> Đăng bài viết/sản phẩm</a>
+          <ul>
+            <li>
+              <a href="baiviet.html"
+                ><i class="fas fa-pen"></i> Đăng bài viết</a
+              >
+            </li>
+            <li>
+              <a href="sanpham.html"
+                ><i class="fas fa-box"></i> Đăng sản phẩm</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="sidebar-menu">
+        <h2>Danh mục sản phẩm</h2>
+        <ul>
+          <li>
+            <a href="SPbanchay.html"
+              ><i class="fas fa-fire"></i> Sản Phẩm Bán Chạy</a
+            >
+          </li>
+          <li>
+            <a href="SPmoi.html"><i class="fas fa-tags"></i> Sản Phẩm Mới</a>
+          </li>
+          <li>
+            <a href="SmartPhone.html"
+              ><i class="fas fa-mobile-alt"></i> Smartphones</a
+            >
+          </li>
+          <li>
+            <a href="Laptop.html"><i class="fas fa-laptop"></i> Laptops</a>
+          </li>
+          <li>
+            <a href="Tablets.html"><i class="fas fa-tablet-alt"></i> Tablets</a>
+          </li>
+          <li>
+            <a href="Cameras.html"><i class="fas fa-camera"></i> Cameras</a>
+          </li>
+          <li>
+            <a href="Tainghe.html"
+              ><i class="fas fa-headphones"></i> Headphones</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="container">
+        <div class="post-header">
+          <div class="post-info">
+            <span class="category">Đánh giá</span>
+            <h1>3 Tai Nghe Gaming tốt nhất 2024 - Ưu điểm và Nhược điểm</h1>
+            <div class="author-info">
+              <img src="bao.webp" alt="Nguyễn Hữu Bảo" class="author-image" />
+              <p>Đăng bởi Nguyễn Hữu Bảo - 01/07/2024</p>
+            </div>
+            <div class="social-info">
+              <a href="#"> <i class="fas fa-thumbs-up"></i> 20 Lượt thích </a>
+              <a href="#"> <i class="fas fa-comments"></i> 10 Bình luận </a>
+            </div>
+          </div>
+          <img
+            src="tai-nghe-gaming-kingston-hyperx-cloud-stinger.jpg"
+            alt="Tai Nghe Gaming"
+            class="header-image"
+          />
+        </div>
+        <div class="post-content">
+          <p>
+            Tai nghe gaming luôn là chủ đề hấp dẫn cho những game thủ và người
+            dùng cần trải nghiệm âm thanh chất lượng cao. Năm 2024 mang đến
+            nhiều lựa chọn đáng chú ý với thiết kế bắt mắt và hiệu năng ấn
+            tượng. Dưới đây là danh sách 10 tai nghe gaming tốt nhất mà bạn có
+            thể cân nhắc.
+          </p>
+          <h2>1. SteelSeries Arctis Pro</h2>
+          <img src="tai-nghe-choi-game-10.jpg" alt="SteelSeries Arctis Pro" />
+          <p>
+            SteelSeries Arctis Pro là một trong những tai nghe gaming nổi bật
+            nhất hiện nay. Với âm thanh Hi-Res và bộ khuếch đại DAC, nó đảm bảo
+            chất lượng âm thanh tuyệt hảo. Bên cạnh đó, thiết kế thoải mái với
+            đệm tai cao cấp mang lại trải nghiệm nghe tốt nhất.
+          </p>
+          <p>
+            <strong>Ưu điểm:</strong> Âm thanh chất lượng cao, thiết kế thoải
+            mái, tích hợp bộ khuếch đại DAC.
+          </p>
+          <p>
+            <strong>Nhược điểm:</strong> Giá thành cao, không dây chưa thật sự
+            ổn định.
+          </p>
+          <h2>2. Razer BlackShark V2</h2>
+          <img src="BlackSharkV2.jpg" alt="Razer BlackShark V2" />
+          <p>
+            Razer BlackShark V2 là sự lựa chọn phổ biến trong phân khúc tai nghe
+            gaming tầm trung. Với màng loa TriForce Titanium 50mm và micro
+            HyperClear Cardioid, nó mang đến hiệu suất âm thanh và giao tiếp rõ
+            ràng.
+          </p>
+          <p>
+            <strong>Ưu điểm:</strong> Hiệu suất tốt, giá cả hợp lý, micro chất
+            lượng cao.
+          </p>
+          <p>
+            <strong>Nhược điểm:</strong> Thiết kế hơi cồng kềnh, không có kết
+            nối không dây.
+          </p>
+          <h2>3. HyperX Cloud II Wireless</h2>
+          <img src="CloudII.jpg" alt="HyperX Cloud II Wireless" />
+          <p>
+            HyperX Cloud II Wireless là tai nghe gaming cao cấp với thiết kế
+            không dây và hiệu suất mạnh mẽ. Máy được trang bị âm thanh 7.1
+            surround và pin kéo dài tới 30 giờ, mang đến trải nghiệm chơi game
+            tuyệt vời.
+          </p>
+          <p>
+            <strong>Ưu điểm:</strong> Thiết kế không dây tiện lợi, âm thanh 7.1
+            surround, pin lâu.
+          </p>
+          <p>
+            <strong>Nhược điểm:</strong> Giá cao, không tương thích tốt với một
+            số thiết bị.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p>&copy; 2024 - Quản Lí Sản Phẩm Công Nghệ</p>
+    </footer>
+  </body>
+</html>

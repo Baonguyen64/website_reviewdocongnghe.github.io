@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Tài Khoản</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .register-form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .register-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .register-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .register-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensure the width includes padding and border */
+        }
+        .register-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: blue;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box; /* Ensure the width includes padding and border */
+        }
+        .register-form button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-form">
+        <h2>Đăng Ký Tài Khoản</h2>
+        <form id="registerForm" onsubmit="return handleRegister(event)">
+            <label for="register-username">Tài Khoản:</label>
+            <input type="text" id="register-username" name="username" required>
+
+            <label for="register-email">Email:</label>
+            <input type="email" id="register-email" name="email" required>
+
+            <label for="register-phone">Số Điện Thoại:</label>
+            <input type="text" id="register-phone" name="phone" onblur="validatePhone(this.value)" placeholder="Nhập số điện thoại" required>
+            <span id="phone-error" style="color: red;"></span>
+            
+
+            <label for="register-password">Mật Khẩu:</label>
+            <input type="password" id="register-password" name="password" required>
+
+            <label for="register-confirm-password">Xác Nhận Mật Khẩu:</label>
+            <input type="password" id="register-confirm-password" name="confirm-password" required>
+
+            <button type="submit">Đăng Ký</button>
+        </form>
+    </div>
+    <script>
+        function validatePhone(phone) {
+            // Regular expression to match a 10-digit phone number (Vietnamese format)
+            var phonePattern = /^[0-9]{10}$/;
+            var phoneField = document.getElementById('register-phone');
+            var phoneError = document.getElementById('phone-error');
+
+            if (!phonePattern.test(phone)) {
+                phoneError.textContent = "Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số.";
+                phoneField.focus();
+                return false;
+            } else {
+                phoneError.textContent = "";
+                return true;
+            }
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('register-username').value;
+            const email = document.getElementById('register-email').value;
+            const phone = document.getElementById('register-phone').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert("Mật khẩu và xác nhận mật khẩu không khớp");
+                return false;
+            }
+
+            if (!validatePhone(phone)) {
+                return false;
+            }
+
+            var data = {
+                username: username,
+                email: email,
+                phone: phone,
+                password: password
+            };
+
+            $.ajax({
+                url: 'http://localhost:3000/thongtin', // Địa chỉ URL để lưu thông tin
+                type: 'POST',
+                data: JSON.stringify(data), // Chuyển đổi đối tượng thành chuỗi JSON
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    console.log(response);
+                    alert("Đăng ký thành công");
+                    window.location.href = 'dangnhap.html'; // Chuyển hướng đến trang đăng nhập sau khi đăng ký thành công
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert("Đăng ký thất bại. Vui lòng thử lại sau.");
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lí Sản Phẩm Công Nghệ</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link rel="stylesheet" href="btl.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #c3e5ff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures body takes up full height */
+        }
+        .navbar {
+            background-color: #004a82;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        .navbar input[type="text"] {
+            padding: 5px;
+            width: 300px;
+        }
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            justify-content: space-evenly;
+        }
+        .navbar ul li {
+            margin: 0;
+        }
+        .navbar ul li a {
+            padding: 5px 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .main-content {
+            display: flex;
+            width: 100%;
+            flex: 1; /* Ensure main content takes up remaining space */
+        }
+        .sidebar-menu {
+            width: 20%;
+            background-color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar-menu h2 {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .sidebar-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+        .sidebar-menu li a {
+            color: #004a82;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .sidebar-menu li a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 20px;
+            flex: 1;
+        }
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .reviews {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .review-item {
+            background-color: #ffffff;
+            margin: 10px;
+            padding: 150px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(50% - 40px); /* Adjusted for two items per row */
+            box-sizing: border-box;
+            max-width: calc(50% - 40px);
+            text-align: left; /* Center align text */
+        }
+        .review-item h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            white-space: nowrap; /* Prevents text from breaking into multiple lines */
+        }
+        .review-item h2 a {
+            text-decoration: none;
+            color: #004a82;
+        }
+        .footer {
+            background-color: #004a82;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: fixed; /* Fixed at the bottom of the page */
+            bottom: 0; /* Aligns it to the bottom */
+        }
+        .footer p {
+            margin: 0;
+            color: #fff;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Quản Lí Sản Phẩm Công Nghệ</h1>        
+        <ul>
+            <li><a href="trangchu.html">Trang Chủ</a></li>
+            <li><a href="review.html">Review Sản Phẩm
+                <ul class="reviewsp">
+                    <li><a href="dienthoai.html">Smartphones</a></li>
+                    <li><a href="laptop.html">Laptops</a></li>
+                    <li><a href="mtbang.html">Tablets</a></li>
+                    <li><a href="cam.html">Cameras</a></li>
+                    <li><a href="headphones.html">Headphones</a></li>
+                </ul>
+            </a></li>
+            <li><a href="tintuc.html">Tin Tức</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+            <li><a href="dangbai.html">Đăng bài viết/sản phẩm
+                <ul>
+                    <li><a href="qlibaiviet.html">Đăng bài viết</a></li>
+                    <li><a href="qlisanpham.html">Đăng sản phẩm</a></li>
+                </ul>
+            </a></li>
+            <li><a href="modau.html">Đăng xuất</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="sidebar-menu">
+            <h2>Danh mục sản phẩm</h2>
+            <ul>
+                <li><a href="SPbanchay.html">Sản Phẩm Bán Chạy</a></li>
+                <li><a href="SPmoi.html">Sản Phẩm Mới</a></li>
+                <li><a href="SmartPhone.html">Smartphones</a></li>
+                <li><a href="Laptop.html">Laptops</a></li>
+                <li><a href="Tablets.html">Tablets</a></li>
+                <li><a href="Cameras.html">Cameras</a></li>
+                <li><a href="Tainghe.html">Headphones</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="section-title"><h2>Bạn muốn đăng bài?</h2></div>
+            <p>Hãy CLICK vào lựa chọn của bạn bên dưới</p>
+            <div class="reviews">
+                <div class="review-item">
+                    <h2><a href="baiviet.html">Đăng Bài Viết Review Sản Phẩm Mới</a></h2>
+                </div>
+                <div class="review-item">
+                    <h2><a href="sanpham.html">Đăng Thông Tin Sản Phẩm Mới</a></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Chào mừng đến với trang web của chúng tôi - Quản Lí Sản Phẩm Công Nghệ</p>
+    </div>
+</body>
+</html>

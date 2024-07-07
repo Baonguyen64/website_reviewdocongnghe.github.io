@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Bài Viết</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="quanli.css" />
+    <style>
+        .baiviet-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .baiviet-item img {
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+
+        .baiviet-item button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Quản lý Bài Viết</h2>
+    <div>
+        ID: <input type="text" id="id" name="id"><br />
+        Người đăng: <input type="text" id="nguoidang" name="nguoidang"><br />
+        Số điện thoại: <input type="number" id="sdt" name="sdt"><br />
+        Địa chỉ: <input type="text" id="diachi" name="diachi"><br />
+        Email: <input type="email" id="email" name="email"><br />
+        Tiêu đề: <textarea id="tieude" name="tieude"></textarea><br />
+        Nội Dung: <textarea id="noidung" name="noidung"></textarea><br />
+        Ngày đăng: <input type="date" id="ngaydang" name="ngaydang"><br />
+        Hình ảnh: <input type="text" id="Hinhanh" name="Hinhanh"><br />
+        Link bài viết review sản phẩm: <input type="text" id="linkBaiViet" name="linkBaiViet"><br>
+        <button onclick="themBaiviet()">Thêm Bài Viết</button>
+        <button onclick="capnhatBaiviet()">Cập Nhật Bài Viết</button>
+        <button onclick="xoaBaiviet()">Xoá Bài Viết</button>
+    </div>
+    <h3>Danh sách Bài Viết</h3>
+    <div id="baiviet-list"></div>
+    <script>
+        function validateInput() {
+            var id = $('#id').val().trim();
+            var nguoidang = $('#nguoidang').val().trim();
+            var sdt = $('#sdt').val().trim();
+            var diachi = $('#diachi').val().trim();
+            var email = $('#email').val().trim();
+            var tieude = $('#tieude').val().trim();
+            var noidung = $('#noidung').val().trim();
+            var ngaydang = $('#ngaydang').val().trim();
+            var Hinhanh = $('#Hinhanh').val().trim();
+            var linkBaiViet = $('#linkBaiViet').val().trim();
+            if(!id || !nguoidang || !sdt || !diachi || !email || !tieude || !noidung || !ngaydang|| !linkBaiViet )
+            {
+                alert('Vui lòng nhập đầy đủ thông tin.');
+                return false;
+            }
+
+            return true;
+        }
+
+        //     if (!id || !nguoidang || !sdt || !diachi || !email || !tieude || !noidung || !ngaydang) {
+        //         alert('Vui lòng nhập đầy đủ thông tin.');
+        //         return false;
+        //     }
+
+        //     if (!validateEmail(email)) {
+        //         alert('Email không hợp lệ.');
+        //         return false;
+        //     }
+
+        //     if (Hinhanh && !validateURL(Hinhanh)) {
+        //         alert('URL hình ảnh không hợp lệ.');
+        //         return false;
+        //     }
+
+        //     if (linkBaiViet && !validateURL(linkBaiViet)) {
+        //         alert('URL bài viết review sản phẩm không hợp lệ.');
+        //         return false;
+        //     }
+
+        //     return true;
+        // }
+
+        function validateEmail(email) {
+            var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validateURL(url) {
+            var re = /^(ftp|http|https):\/\/[^ "]+$/;
+            return re.test(url);
+        }
+
+        function themBaiviet() {
+            if (!validateInput()) return;
+
+            var id = $('#id').val().trim();
+            var nguoidang = $('#nguoidang').val().trim();
+            var sdt = $('#sdt').val().trim();
+            var diachi = $('#diachi').val().trim();
+            var email = $('#email').val().trim();
+            var tieude = $('#tieude').val().trim();
+            var noidung = $('#noidung').val().trim();
+            var ngaydang = $('#ngaydang').val().trim();
+            var Hinhanh = $('#Hinhanh').val().trim();
+            var linkBaiViet = $('#linkBaiViet').val().trim();
+
+            var data = {
+                id: id,
+                nguoidang: nguoidang,
+                sdt: sdt,
+                diachi: diachi,
+                email: email,
+                tieude: tieude,
+                noidung: noidung,
+                ngaydang: ngaydang,
+                Hinhanh: Hinhanh,
+                linkBaiViet: linkBaiViet
+            };
+
+            $.ajax({
+                url: 'http://localhost:3000/baiviet',
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+                    alert('Thêm bài viết thành công!');
+                    loadBaiviet();
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert('Thêm bài viết thất bại!');
+                }
+            });
+        }
+
+        function capnhatBaiviet() {
+            if (!validateInput()) return;
+
+            var id = $('#id').val().trim();
+            var nguoidang = $('#nguoidang').val().trim();
+            var sdt = $('#sdt').val().trim();
+            var diachi = $('#diachi').val().trim();
+            var email = $('#email').val().trim();
+            var tieude = $('#tieude').val().trim();
+            var noidung = $('#noidung').val().trim();
+            var ngaydang = $('#ngaydang').val().trim();
+            var Hinhanh = $('#Hinhanh').val().trim();
+            var linkBaiViet = $('#linkBaiViet').val().trim();
+
+            var data = {
+                nguoidang: nguoidang,
+                sdt: sdt,
+                diachi: diachi,
+                email: email,
+                tieude: tieude,
+                noidung: noidung,
+                ngaydang: ngaydang,
+                Hinhanh: Hinhanh,
+                linkBaiViet: linkBaiViet
+            };
+
+            $.ajax({
+                url: 'http://localhost:3000/baiviet/' + id,
+                type: 'PUT',
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+                    alert('Cập nhật bài viết thành công!');
+                    loadBaiviet();
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert('Cập nhật bài viết thất bại!');
+                }
+            });
+        }
+
+        function xoaBaiviet() {
+            var id = $('#id').val().trim();
+            if (!id) {
+                alert('Vui lòng nhập ID.');
+                return;
+            }
+            $.ajax({
+                url: 'http://localhost:3000/baiviet/' + id,
+                type: 'DELETE',
+                success: function (response) {
+                    console.log(response);
+                    alert('Xoá bài viết thành công!');
+                    loadBaiviet();
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert('Xoá bài viết thất bại!');
+                }
+            });
+        }
+
+        function loadBaiviet() {
+            $.ajax({
+                url: 'http://localhost:3000/baiviet',
+                type: 'GET',
+                success: function (response) {
+                    var baivietList = $('#baiviet-list');
+                    baivietList.empty();
+                    response.forEach(function (baiviet) {
+                        var imgTag = baiviet.Hinhanh ? '<img src="' + baiviet.Hinhanh + '" alt="Hình ảnh" style="max-width: 200px;"><br>' : '';
+                        var reviewLink = baiviet.linkBaiViet ? 'Bài viết review: <a href="' + baiviet.linkBaiViet + '" target="_blank">' + baiviet.linkBaiViet + '</a><br>' : '';
+                        baivietList.append(
+                            '<div class="baiviet-item">' +
+                            '<p>ID: ' + baiviet.id + '</p>' +
+                            '<p>Người đăng: ' + baiviet.nguoidang + '</p>' +
+                            '<p>Số điện thoại: ' + baiviet.sdt + '</p>' +
+                            '<p>Địa chỉ: ' + baiviet.diachi + '</p>' +
+                            '<p>Email: ' + baiviet.email + '</p>' +
+                            '<p>Tiêu đề: ' + baiviet.tieude + '</p>' +
+                            '<p>Nội dung: ' + baiviet.noidung + '</p>' +
+                            '<p>Ngày đăng: ' + baiviet.ngaydang + '</p>' +
+                            imgTag +
+                            reviewLink +
+                            '<button onclick="deleteBaiviet(\'' + baiviet.id + '\')">Xoá</button>' +
+                            '</div>'
+                        );
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert('Load danh sách bài viết thất bại!');
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            loadBaiviet();
+        });
+    </script>
+</body>
+
+</html>

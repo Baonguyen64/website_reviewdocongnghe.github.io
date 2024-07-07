@@ -1,0 +1,240 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #c3e5ff;
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar {
+    background-color: #004a82;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .navbar h1 {
+    margin: 0;
+  }
+  .navbar input[type="text"] {
+    padding: 5px;
+    width: 300px;
+  }
+  .navbar ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .navbar ul li {
+    margin: 0;
+  }
+  .navbar ul li a {
+    padding: 5px 20px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .main-content {
+    display: flex;
+    width: 100%;
+  }
+  .sidebar-menu {
+    width: 20%;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  .sidebar-menu h2 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  .sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  .sidebar-menu li {
+    margin-bottom: 10px;
+  }
+  .sidebar-menu li a {
+    color: #004a82;
+    text-decoration: none;
+    font-size: 1em;
+  }
+  .sidebar-menu li a:hover {
+    text-decoration: underline;
+  }
+  .container {
+    padding: 20px;
+    flex: 1;
+  }
+  .section-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  .reviews,
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .review-item,
+  .product-item {
+    background-color: #fff;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+  }
+  .review-item img,
+  .product-item img {
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  .review-item h2,
+  .product-item h2 {
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+  }
+  .review-item p,
+  .product-item p {
+    font-size: 0.9em;
+    color: #666;
+  }
+  .footer p {
+    color: #004a82;
+    width: 100%;
+    height: 30px;
+  }
+  .footer {
+    background-color: #004a82;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .footer p {
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    justify-content: center;
+  }
+  .news-section {
+    padding: 20px;
+    width: 80%;
+    background-color: #f4f4f4;
+  }
+  .news-item {
+    display: flex;
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .news-item img {
+    max-width: 150px;
+    height: 180px; /* Đặt chiều cao cố định */
+    object-fit: cover; /* Đảm bảo ảnh không bị bể */
+    border-radius: 10px;
+  }
+
+  .news-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #004a82;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+  .news-date span {
+    display: block;
+  }
+  .news-content {
+    flex: 1;
+  }
+  .news-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .news-meta span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background-color: #eee;
+    border-radius: 3px;
+    margin-right: 5px;
+  }
+  /* Hiệu ứng cho các mục chính của menu */
+  .navbar ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: space-evenly;
+    position: relative; /* Added to position submenus correctly */
+  }
+
+  .navbar ul li {
+    position: relative;
+  }
+
+  .navbar ul li a {
+    padding: 5px 20px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .navbar ul li a:hover {
+    color: #ffb8b8;
+    font-weight: bold;
+    background-color: #004a82;
+  }
+
+  /* Dropdown menu styling */
+  .navbar ul li ul {
+    display: none;
+    position: absolute;
+    background-color: #004a82;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    top: 100%; /* Positions the submenu below the main menu item */
+    left: 0; /* Aligns the submenu to the left edge of the parent item */
+  }
+
+  .navbar ul li:hover ul {
+    display: block;
+  }
+
+  .navbar ul li ul li {
+    width: 200px; /* Set the width for dropdown items */
+  }
+
+  .navbar ul li ul li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    background-color: #004a82; /* Background color for dropdown items */
+  }
+
+  .navbar ul li ul li a:hover {
+    background-color: #003b6b; /* Background color on hover */
+    color: #ffb8b8; /* Text color on hover */
+  }

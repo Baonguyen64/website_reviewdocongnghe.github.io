@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lí Sản Phẩm Công Nghệ</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+      }
+      .navbar {
+        background-color: #004a82;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .navbar h1 {
+        margin: 0;
+      }
+      .navbar input[type="text"] {
+        padding: 5px;
+        width: 300px;
+      }
+      .navbar ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        justify-content: space-evenly;
+        position: relative;
+      }
+      .navbar ul li {
+        position: relative;
+      }
+      .navbar ul li a {
+        padding: 5px 20px;
+        color: #fff;
+        text-decoration: none;
+      }
+      .navbar ul li a:hover {
+        color: #ffb8b8;
+        font-weight: bold;
+        background-color: #004a82;
+      }
+      .navbar ul li ul {
+        display: none;
+        position: absolute;
+        background-color: #004a82;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        top: 100%;
+        left: 0;
+      }
+      .navbar ul li:hover ul {
+        display: block;
+      }
+      .navbar ul li ul li {
+        width: 200px;
+      }
+      .navbar ul li ul li a {
+        display: block;
+        padding: 10px;
+        color: #fff;
+        text-decoration: none;
+        background-color: #004a82;
+      }
+      .navbar ul li ul li a:hover {
+        background-color: #003b6b;
+        color: #ffb8b8;
+      }
+      .main-content {
+        display: flex;
+        width: 100%;
+      }
+      .sidebar-menu {
+        width: 20%;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+      .sidebar-menu h2 {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+      .sidebar-menu ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar-menu li {
+        margin-bottom: 10px;
+      }
+      .sidebar-menu li a {
+        color: #004a82;
+        text-decoration: none;
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+      }
+      .sidebar-menu li a:hover {
+        text-decoration: underline;
+      }
+      .sidebar-menu li a .fas {
+        margin-right: 10px;
+      }
+      .container {
+        padding: 20px;
+        flex: 1;
+      }
+      .post-header {
+        position: relative;
+      }
+      .header-image {
+        width: 100%;
+        height: auto;
+      }
+      .post-info {
+        padding: 20px;
+      }
+      .category {
+        background: #d32f2f;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 10px 0;
+      }
+      .author-info {
+        display: flex;
+        align-items: center;
+      }
+      .author-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .author-info p {
+        margin: 0;
+        color: #666;
+      }
+      .social-info {
+        margin-top: 10px;
+      }
+      .social-info a {
+        color: #d32f2f;
+        text-decoration: none;
+      }
+      .social-info a:hover {
+        text-decoration: underline;
+      }
+      .post-content {
+        margin-top: 20px;
+      }
+      .post-content img {
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+      }
+      .footer {
+        background-color: #004a82;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      .footer p {
+        margin: 0;
+        color: #fff;
+        text-align: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <h1>Quản Lí Sản Phẩm Công Nghệ</h1>
+      <input type="text" placeholder="Bạn cần tìm sản phẩm..." />
+      <ul>
+        <li>
+          <a href="trangchu.html"><i class="fas fa-home"></i> Trang Chủ</a>
+        </li>
+        <li>
+          <a href="review.html"><i class="fas fa-star"></i> Review Sản Phẩm</a>
+          <ul>
+            <li>
+              <a href="dienthoai.html"
+                ><i class="fas fa-mobile-alt"></i> Smartphones</a
+              >
+            </li>
+            <li>
+              <a href="laptop.html"><i class="fas fa-laptop"></i> Laptops</a>
+            </li>
+            <li>
+              <a href="mtbang.html"
+                ><i class="fas fa-tablet-alt"></i> Tablets</a
+              >
+            </li>
+            <li>
+              <a href="cam.html"><i class="fas fa-camera"></i> Cameras</a>
+            </li>
+            <li>
+              <a href="headphones.html"
+                ><i class="fas fa-headphones"></i> Headphones</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="tintuc.html"><i class="fas fa-newspaper"></i> Tin Tức</a>
+        </li>
+        <li>
+          <a href="lienhe.html"><i class="fas fa-envelope"></i> Liên hệ</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-upload"></i> Đăng bài viết/sản phẩm</a>
+          <ul>
+            <li>
+              <a href="baiviet.html"
+                ><i class="fas fa-pen"></i> Đăng bài viết</a
+              >
+            </li>
+            <li>
+              <a href="sanpham.html"
+                ><i class="fas fa-box"></i> Đăng sản phẩm</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="sidebar-menu">
+        <h2>Danh mục sản phẩm</h2>
+        <ul>
+          <li>
+            <a href="SPbanchay.html"
+              ><i class="fas fa-fire"></i> Sản Phẩm Bán Chạy</a
+            >
+          </li>
+          <li>
+            <a href="SPmoi.html"><i class="fas fa-tags"></i> Sản Phẩm Mới</a>
+          </li>
+          <li>
+            <a href="SmartPhone.html"
+              ><i class="fas fa-mobile-alt"></i> Smartphones</a
+            >
+          </li>
+          <li>
+            <a href="Laptop.html"><i class="fas fa-laptop"></i> Laptops</a>
+          </li>
+          </li>
+          <li>
+            <a href="Tainghe.html"
+              ><i class="fas fa-headphones"></i> Headphones</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="container">
+        <div class="post-header">
+          <div class="post-info">
+            <span class="category">Đánh giá</span>
+            <h1>3 Laptop Gaming tốt nhất 2024 - Ưu điểm và Nhược điểm</h1>
+            <div class="author-info">
+              <img src="bao.webp" alt="Nguyễn Hữu Bảo" class="author-image" />
+              <p>Đăng bởi Nguyễn Hữu Bảo - 01/07/2024</p>
+            </div>
+            <div class="social-info">
+              <a href="#"> <i class="fas fa-thumbs-up"></i> 20 Lượt thích </a>
+              <a href="#"> <i class="fas fa-comments"></i> 10 Bình luận </a>
+            </div>
+          </div>
+          <img src="imagem-release.jpg" alt="Laptop Gaming" class="header-image" />
+        </div>
+        <div class="post-content">
+          <p>
+            Laptop gaming luôn là chủ đề hấp dẫn cho những game thủ và người
+            dùng cần cấu hình mạnh mẽ. Năm 2024 mang đến nhiều lựa chọn đáng chú
+            ý với thiết kế bắt mắt và hiệu năng ấn tượng. Dưới đây là danh sách
+            3 laptop gaming tốt nhất mà bạn có thể cân nhắc.
+          </p>
+          <h2>1. Asus ROG Strix Scar 18</h2>
+          <p>
+            Asus ROG Strix Scar 18 là lần đầu tiên tôi nếm thử những con chip
+            mới của Intel và Nvidia và tôi phải nói rằng, nó cực kỳ ngon. Strix
+            Scar 18 là một con thú đúng nghĩa, chạy với bộ xử lý Core i9 13900HX
+            thế hệ thứ 13 của Intel và GPU GeForce RTX 4090 của Nvidia. Cả hai
+            đều cực kỳ mạnh mẽ và có khả năng ép xung cao nên bạn có thể tận
+            dụng tối đa sức mạnh của hệ thống. Ngoài ra, laptop còn có cảm giác
+            Blade Runner (Viễn tưởng) mà tôi rất thích cùng với màn hình 18
+            inch, QHD (2560 x 1600), 240Hz mang đến hình ảnh đẹp với khả năng
+            hiển thị mượt mà. Vì vậy, trong các bài kiểm tra, ROG Strix Scar 18
+            đều hoàn thành xuất sắc. Trong các thử nghiệm chơi game, hiếm khi
+            Strix Scar 18 có kết quả dưới ba chữ số. Chúng tôi đã thấy tốc độ
+            154 FPS trên Assassin’s Creed Valhalla trong khi nó đạt 181 và 152
+            FPS trên Rise of the Tomb Raider và Grand Theft Auto V. CPU thế hệ
+            thứ 13 đã vượt qua đối thủ, đạt 19.233 điểm trên Geekbench 5.4; con
+            số đó cao hơn gấp đôi so với mức trung bình về hiệu suất tổng thể
+            của laptop gaming cao cấp. Hệ thống này đã hoàn thành bài kiểm tra
+            render video của chúng tôi chỉ trong 2 phút 49 giây (nhanh hơn một
+            phút so với MacBook Pro 16 inch M2 Pro Max), trong khi cặp ổ SSD 1TB
+            của nó đã thống trị các bài kiểm tra truyền tập tin của chúng tôi.
+            <p>Tuy nhiên, tất cả sức mạnh đó đều phải có đánh đổi. Thời lượng pin
+            của Scar 18 tạm chấp nhận được, với 4 giờ 26 phút ở mức sử dụng
+            trung bình. Một nhược điểm khác là webcam có độ phân giải 720p,
+            chúng tôi mong đợi 1080p ở mức giá này. Nhưng nhìn chung, Asus ROG
+            Strix Scar 18 là laptop gaming xứng đáng đánh bại các đối thủ khác
+            và cũng đã lọt vào danh sách laptop Asus tốt nhất của chúng tôi.
+          </p>
+        </p>
+          <img src="ROG.jpg" alt="Asus ROG Strix Scar 18" />
+          <p>
+            Asus ROG Zephyrus G14 là một trong những laptop gaming nổi bật nhất
+            hiện nay. Với vi xử lý AMD Ryzen 9 và card đồ họa NVIDIA GeForce RTX
+            3060, nó đảm bảo hiệu suất chơi game mượt mà. Bên cạnh đó, màn hình
+            14 inch với tần số quét 120Hz cung cấp hình ảnh sắc nét và trải
+            nghiệm tuyệt vời.
+          </p>
+          <p>
+            <strong>Ưu điểm:</strong> 
+            <ul>
+                <li>Thiết kế phong cách tương lai</li>
+                <li>Màn hình đẹp</li>
+                <li>Âm thanh hay</li>
+                <li>Hiệu suất tổng thể và chơi game ấn tượng</li>
+            </ul>
+          </p>
+          <p>
+            <strong>Nhược điểm:</strong> Giá thành cao, quạt tản nhiệt khá ồn.
+          </p>
+          <h2>2. Acer Predator Triton 300 SE</h2>
+          <h3>Thông số kỹ thuật</h3>
+          <p>
+            CPU: Intel Core i7 11375H | GPU: Nvidia GeForce RTX 3060 | RAM: 16GB | Dung lượng lưu trữ: 512GB | Màn hình: 14 inch, 1080p @ 144Hz | Trọng lượng: 1,7 kg
+          </p>
+          <img src="Helios300.jpg" alt="Acer Predator Triton 300 SE" />
+          <p>
+            Acer đã tạo dựng danh tiếng của mình nhờ khả năng cung cấp các dòng laptop 
+            chất lượng với giá cả phải chăng và chỉ với 25 triệu, không tốn quá nhiều tiền, 
+            Triton 300 SE cung cấp mọi thứ bạn cần từ một chiếc Laptop Gaming: hiệu năng Intel 
+            Core i7 thế hệ thứ 11; hình ảnh tuyệt đẹp được hỗ trợ bởi Nvidia GeForce RTX 3060;
+            màn hình 1080p sắc nét, tươi sáng, sống động; và tần số quét 144Hz.
+            Tuyệt vời hơn nữa là tất cả đều được đặt trong một khung máy màu bạc mỏng và đầy phong cách. 
+            Triton 300 SE có một số tính năng thú vị khác, bao gồm bàn phím thoải mái với RGB ba vùng và 
+            thời lượng pin ổn định kéo dài hơn 6 tiếng rưỡi trong quá trình thử nghiệm của chúng tôi
+            Tuy nhiên, điểm đặc biệt nhất của Triton 300 SE là hiệu năng và trên một loạt các tựa game AAA 
+            đồ họa cao, Triton 300 SE đã thể hiện số khung hình ấn tượng — ngay cả ở cài đặt tối đa. Nếu bạn 
+            mua với mức giá vừa phải, điều quan trọng nhất là giá trị mà nó mang lại. Về hiệu suất / tỷ lệ 
+            giá của Acer Predator Triton 300 SE là không ai sánh kịp.
+          </p>
+          <p>
+            <strong>Ưu điểm:</strong> 
+            <ul>
+                <li>Hiệu suất và đồ họa mạnh mẽ</li>
+                <li>Thời lượng pin tốt</li>
+                <li>Màn hình sáng và đầy màu sắc</li>
+                <li>Kiểu dáng đẹp, khung gầm 14 inch</li>
+            </ul>
+          </p>
+          <p>
+            <strong>Nhược điểm:</strong> Thiết kế hơi cồng kềnh, pin không bền.
+          </p>
+          <h2>3. Lenovo Legion 5i Pro</h2>
+          <h3>Thông số kỹ thuật</h3>
+          <p>CPU: Intel Core i7 13700HX | GPU: Nvidia GeForce RTX 4060 | RAM: 16GB | Bộ nhớ: SSD 512GB NVMe M.2 2230 | Màn hình: 16 inch, QHD (2560 x 1600) ở 165Hz | Trọng lượng: 2,49kg</p>
+          <img src="Lenovo Legion 5i Pro.jpg" alt="Lenovo Legion 5i Pro" />
+          <p>
+            Acer đã tạo dựng danh tiếng của mình nhờ khả năng cung cấp các dòng laptop chất lượng với giá cả phải chăng và chỉ với 25 triệu, không tốn quá nhiều tiền, Triton 300 SE cung cấp mọi thứ bạn cần từ một chiếc Laptop Gaming: hiệu năng Intel Core i7 thế hệ thứ 11; hình ảnh tuyệt đẹp được hỗ trợ bởi Nvidia GeForce RTX 3060; màn hình 1080p sắc nét, tươi sáng, sống động; và tần số quét 144Hz.
+            Tuyệt vời hơn nữa là tất cả đều được đặt trong một khung máy màu bạc mỏng và đầy phong cách. Triton 300 SE có một số tính năng thú vị khác, bao gồm bàn phím thoải mái với RGB ba vùng và thời lượng pin ổn định kéo dài hơn 6 tiếng rưỡi trong quá trình thử nghiệm của chúng tôi .
+            Tuy nhiên, điểm đặc biệt nhất của Triton 300 SE là hiệu năng và trên một loạt các tựa game AAA đồ họa cao, Triton 300 SE đã thể hiện số khung hình ấn tượng — ngay cả ở cài đặt tối đa. Nếu bạn mua với mức giá vừa phải, điều quan trọng nhất là giá trị mà nó mang lại. Về hiệu suất / tỷ lệ giá của Acer Predator Triton 300 SE là không ai sánh kịp.
+          </p>
+          <p>
+            <strong>Ưu điểm:</strong> 
+            <ul>
+                <li>Thiết kế và phong cách tuyệt vời</li>
+                <li>Màn hình đẹp</li>
+                <li>Bàn phím tuyệt vời</li>
+            </ul>
+          </p>
+          <p>
+            <strong>Nhược điểm:</strong> 
+            <ul>
+                <li>Âm thanh nhỏ</li>
+                <li>Webcam chưa nét</li>
+            </ul>
+            <p>Lenovo Legion Pro 5i là sự lựa chọn tuyệt vời cho những ai đang tìm kiếm cổ máy có sức mạnh kinh ngạc nhưng đặc biệt tập trung vào hiệu suất. Trang bị bộ xử lý Intel Core i7 13700HX, Nvidia GeForce RTX 4060 với card đồ họa VRAM 8GB, RAM 16GB, bộ nhớ SSD 512GB và màn hình 16 inch, QHD (2560 x 1600) ở tần số quét 165Hz giúp trải nghiệm chơi game tuyệt vời.
+                Với số điểm Geekbench 6 là 13.634, đây là điểm mạnh nhất trong danh sách này. Và với màn hình có độ phủ màu ở mức 82,8% DCIP3, cùng với độ sáng đạt 349 nits, màn hình của Lenovo Legion Pro 5i tuyệt vời một cách đáng ngạc nhiên.
+                Nhìn chung, đây là lựa chọn phù hợp cho những ai cần sự cân bằng vững chắc giữa sức mạnh đồ họa và khả năng xử lý mà không phải hy sinh quá nhiều thứ này hay thứ kia.
+            </p>
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p>&copy; 2024 - Quản Lí Sản Phẩm Công Nghệ</p>
+    </footer>
+  </body>
+</html>

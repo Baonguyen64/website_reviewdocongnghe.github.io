@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .login-form {
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        
+        .login-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .login-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: blue;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        .login-form button:hover {
+            background-color: darkblue;
+        }
+        
+        .message {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-form">
+        <h2>Đăng Nhập</h2>
+        <form id="loginForm">
+            <label for="username">Tài Khoản:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Mật Khẩu:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="handleLogin()">Đăng Nhập</button>
+        </form>
+        <div class="message" id="loginMessage"></div>
+        <div class="message">
+            <p>Chưa có tài khoản? <a href="dangki.html">Đăng Ký Tài Khoản</a></p>
+        </div>
+    </div>
+    <script>
+        function handleLogin() {
+            var username = $('#username').val();
+            var password = $('#password').val();
+
+            $.ajax({
+                url: 'http://localhost:3000/thongtin',
+                dataType: 'json',
+                success: function(users) {
+                    const user = users.find(user => user.username === username && user.password === password);
+                    if (user) {
+                        $('#loginMessage').text("Đăng nhập thành công");
+                        $('#loginMessage').css('color', 'green');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1000);
+                    } else {
+                        $('#loginMessage').text("Đăng nhập thất bại");
+                        $('#loginMessage').css('color', 'red');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Lỗi khi fetch:', error);
+                    alert("Đăng nhập thất bại. Vui lòng thử lại sau.");
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

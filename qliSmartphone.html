@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Sản Phẩm Công Nghệ</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="quanli.css" />
+    <style>
+        .sanpham-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .sanpham-item img {
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+        .sanpham-item button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Quản lý Tai Nghe</h2>
+    <div>
+        ID: <input type="text" id="id" name="id"><br/>
+        Sản Phẩm: <input type="text" id="Sanpham" name="Sanpham"><br/>
+        Mã Sản Phẩm: <input type="text" id="maSP" name="maSP"><br/>
+        Ngày Sản Xuất: <input type="date" id="ngaySX" name="ngaySX"><br/>
+        Mô tả: <textarea id="mota" name="mota"></textarea><br/>
+        Giá: <input type="number" id="gia" name="gia"><br/>
+        Hình ảnh: <input type="text" id="hinhAnh" name="hinhAnh"><br/>
+        Bài viết review sản phẩm: <input type="text" id="linkSanPham" name="linkSanPham"><br/>
+        <button onclick="themSanPham()">Thêm Sản Phẩm</button>
+        <button onclick="suaSanPham()">Sửa Sản Phẩm</button>
+        <button onclick="xoaSanPham()">Xoá Sản Phẩm</button>
+    </div>
+    <h3>Danh sách Sản Phẩm</h3>
+    <div id="sanpham-list"></div>
+    <script>
+        function validateSanPhamInput() {
+            var id = $('#id').val().trim();
+            var Sanpham = $('#Sanpham').val().trim();
+            var maSP = $('#maSP').val().trim();
+            var ngaySX = $('#ngaySX').val().trim();
+            var mota = $('#mota').val().trim();
+            var gia = $('#gia').val().trim();
+            var hinhAnh = $('#hinhAnh').val().trim();
+            var linkSanPham = $('#linkSanPham').val().trim();
+
+            if (!id || !Sanpham || !maSP || !ngaySX || !mota || !gia || !linkSanPham) {
+                alert('Vui lòng nhập đầy đủ thông tin.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function themSanPham() {
+            if (!validateSanPhamInput()) return;
+
+            var id = $('#id').val().trim();
+            var Sanpham = $('#Sanpham').val().trim();
+            var maSP = $('#maSP').val().trim();
+            var ngaySX = $('#ngaySX').val().trim();
+            var mota = $('#mota').val().trim();
+            var gia = $('#gia').val().trim();
+            var hinhAnh = $('#hinhAnh').val().trim();
+            var linkSanPham = $('#linkSanPham').val().trim();
+
+            var data = {
+                id: id,
+                Sanpham: Sanpham,
+                maSP: maSP,
+                ngaySX: ngaySX,
+                mota: mota,
+                gia: gia,
+                hinhAnh: hinhAnh,
+                linkSanPham: linkSanPham
+            };
+            $.ajax({
+                url: 'http://localhost:3000/dienthoai',
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    console.log(response);
+                    alert('Thêm sản phẩm thành công!');
+                    loadSanPham();
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert('Thêm sản phẩm thất bại!');
+                }
+            });
+        }
+
+        function suaSanPham() {
+            if (!validateSanPhamInput()) return;
+
+            var id = $('#id').val().trim();
+            var Sanpham = $('#Sanpham').val().trim();
+            var maSP = $('#maSP').val().trim();
+            var ngaySX = $('#ngaySX').val().trim();
+            var mota = $('#mota').val().trim();
+            var gia = $('#gia').val().trim();
+            var hinhAnh = $('#hinhAnh').val().trim();
+            var linkSanPham = $('#linkSanPham').val().trim();
+
+            var data = {
+                Sanpham: Sanpham,
+                maSP: maSP,
+                ngaySX: ngaySX,
+                mota: mota,
+                gia: gia,
+                hinhAnh: hinhAnh,
+                linkSanPham: linkSanPham
+            };
+            $.ajax({
+                url: 'http://localhost:3000/dienthoai/' + id,
+                type: 'PUT',
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    console.log(response);
+                    alert('Sửa sản phẩm thành công!');
+                    loadSanPham();
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert('Sửa sản phẩm thất bại!');
+                }
+            });
+        }
+
+        function xoaSanPham() {
+            var id = $('#id').val().trim();
+            if (!id) {
+                alert('Vui lòng nhập ID.');
+                return;
+            }
+            $.ajax({
+                url: 'http://localhost:3000/dienthoai/' + id,
+                type: 'DELETE',
+                success: function(response) {
+                    console.log(response);
+                    alert('Xoá sản phẩm thành công!');
+                    loadSanPham();
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert('Xoá sản phẩm thất bại!');
+                }
+            });
+        }
+
+        function loadSanPham() {
+            $.ajax({
+                url: 'http://localhost:3000/dienthoai',
+                type: 'GET',
+                success: function(response) {
+                    var sanphamList = $('#sanpham-list');
+                    sanphamList.empty();
+                    response.forEach(function(sp) {
+                        var imgTag = sp.hinhAnh ? '<img src="' + sp.hinhAnh + '" alt="Hình ảnh" style="max-width: 200px;"><br>' : '';
+                        var reviewLink = sp.linkSanPham ? 'Bài viết review: <a href="' + sp.linkSanPham + '" target="_blank">' + sp.linkSanPham + '</a><br>' : '';
+                        var editButton = '<button onclick="hienthiSanPham(\'' + sp.id + '\')">Sửa</button>';
+                        var deleteButton = '<button onclick="xoaSanPham(\'' + sp.id + '\')">Xoá</button>';
+                        sanphamList.append(
+                            '<div class="sanpham-item">' +
+                            'ID: ' + sp.id + '<br>' +
+                            'Sản Phẩm: ' + sp.Sanpham + '<br>' +
+                            'Mã Sản Phẩm: ' + sp.maSP + '<br>' +
+                            'Ngày Sản Xuất: ' + sp.ngaySX + '<br>' +
+                            'Mô tả: ' + sp.mota + '<br>' +
+                            'Giá: ' + sp.gia + '<br>' +
+                            'Hình ảnh: ' + imgTag +
+                            reviewLink +
+                            editButton + deleteButton +
+                            '</div>'
+                        );
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert('Không thể tải danh sách sản phẩm!');
+                }
+            });
+        }
+
+        function hienthiSanPham(id) {
+            $.ajax({
+                url: 'http://localhost:3000/dienthoai' + id,
+                type: 'GET',
+                success: function(response) {
+                    $('#id').val(response.id);
+                    $('#Sanpham').val(response.Sanpham);
+                    $('#maSP').val(response.maSP);
+                    $('#ngaySX').val(response.ngaySX);
+                    $('#mota').val(response.mota);
+                    $('#gia').val(response.gia);
+                    $('#hinhAnh').val(response.hinhAnh);
+                    $('#linkSanPham').val(response.linkSanPham);
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert('Không thể tải sản phẩm!');
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            loadSanPham();
+        });
+    </script>
+</body>
+</html>

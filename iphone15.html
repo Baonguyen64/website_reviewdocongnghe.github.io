@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lí Sản Phẩm Công Nghệ</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+      }
+      .navbar {
+        background-color: #004a82;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .navbar h1 {
+        margin: 0;
+      }
+      .navbar input[type="text"] {
+        padding: 5px;
+        width: 300px;
+      }
+      .navbar ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        justify-content: space-evenly;
+        position: relative;
+      }
+      .navbar ul li {
+        position: relative;
+      }
+      .navbar ul li a {
+        padding: 5px 20px;
+        color: #fff;
+        text-decoration: none;
+      }
+      .navbar ul li a:hover {
+        color: #ffb8b8;
+        font-weight: bold;
+        background-color: #004a82;
+      }
+      .navbar ul li ul {
+        display: none;
+        position: absolute;
+        background-color: #004a82;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        top: 100%;
+        left: 0;
+      }
+      .navbar ul li:hover ul {
+        display: block;
+      }
+      .navbar ul li ul li {
+        width: 200px;
+      }
+      .navbar ul li ul li a {
+        display: block;
+        padding: 10px;
+        color: #fff;
+        text-decoration: none;
+        background-color: #004a82;
+      }
+      .navbar ul li ul li a:hover {
+        background-color: #003b6b;
+        color: #ffb8b8;
+      }
+      .main-content {
+        display: flex;
+        width: 100%;
+      }
+      .sidebar-menu {
+        width: 20%;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+      .sidebar-menu h2 {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+      .sidebar-menu ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar-menu li {
+        margin-bottom: 10px;
+      }
+      .sidebar-menu li a {
+        color: #004a82;
+        text-decoration: none;
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+      }
+      .sidebar-menu li a:hover {
+        text-decoration: underline;
+      }
+      .sidebar-menu li a .fas {
+        margin-right: 10px;
+      }
+      .container {
+        padding: 20px;
+        flex: 1;
+      }
+      .post-header {
+        position: relative;
+      }
+      .header-image {
+        width: 100%;
+        height: auto;
+      }
+      .post-info {
+        padding: 20px;
+      }
+      .category {
+        background: #d32f2f;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 10px 0;
+      }
+      .author-info {
+        display: flex;
+        align-items: center;
+      }
+      .author-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .author-info p {
+        margin: 0;
+        color: #666;
+      }
+      .social-info {
+        margin-top: 10px;
+      }
+      .social-info a {
+        color: #d32f2f;
+        text-decoration: none;
+      }
+      .social-info a:hover {
+        text-decoration: underline;
+      }
+      .post-content {
+        margin-top: 20px;
+      }
+      .post-content img {
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+      }
+      .footer {
+        background-color: #004a82;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      .footer p {
+        margin: 0;
+        color: #fff;
+        text-align: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <h1>Quản Lí Sản Phẩm Công Nghệ</h1>
+      <input type="text" placeholder="Bạn cần tìm sản phẩm..." />
+      <ul>
+        <li>
+          <a href="trangchu.html"><i class="fas fa-home"></i> Trang Chủ</a>
+        </li>
+        <li>
+          <a href="review.html"><i class="fas fa-star"></i> Review Sản Phẩm</a>
+          <ul>
+            <li>
+              <a href="dienthoai.html"
+                ><i class="fas fa-mobile-alt"></i> Smartphones</a
+              >
+            </li>
+            <li>
+              <a href="laptop.html"><i class="fas fa-laptop"></i> Laptops</a>
+            </li>
+            <li>
+              <a href="mtbang.html"
+                ><i class="fas fa-tablet-alt"></i> Tablets</a
+              >
+            </li>
+            <li>
+              <a href="cam.html"><i class="fas fa-camera"></i> Cameras</a>
+            </li>
+            <li>
+              <a href="headphones.html"
+                ><i class="fas fa-headphones"></i> Headphones</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="tintuc.html"><i class="fas fa-newspaper"></i> Tin Tức</a>
+        </li>
+        <li>
+          <a href="lienhe.html"><i class="fas fa-envelope"></i> Liên hệ</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-upload"></i> Đăng bài viết/sản phẩm</a>
+          <ul>
+            <li>
+              <a href="baiviet.html"
+                ><i class="fas fa-pen"></i> Đăng bài viết</a
+              >
+            </li>
+            <li>
+              <a href="sanpham.html"
+                ><i class="fas fa-box"></i> Đăng sản phẩm</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="sidebar-menu">
+        <h2>Danh mục sản phẩm</h2>
+        <ul>
+          <li>
+            <a href="SPbanchay.html"
+              ><i class="fas fa-fire"></i> Sản Phẩm Bán Chạy</a
+            >
+          </li>
+          <li>
+            <a href="SPmoi.html"><i class="fas fa-tags"></i> Sản Phẩm Mới</a>
+          </li>
+          <li>
+            <a href="SmartPhone.html"
+              ><i class="fas fa-mobile-alt"></i> Smartphones</a
+            >
+          </li>
+          <li>
+            <a href="Laptop.html"><i class="fas fa-laptop"></i> Laptops</a>
+          </li>
+          <li>
+            <a href="Tablets.html"><i class="fas fa-tablet-alt"></i> Tablets</a>
+          </li>
+          <li>
+            <a href="Cameras.html"><i class="fas fa-camera"></i> Cameras</a>
+          </li>
+          <li>
+            <a href="Tainghe.html"
+              ><i class="fas fa-headphones"></i> Headphones</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="container">
+        <div class="post-header">
+          <div class="post-info">
+            <span class="category">Đánh giá</span>
+            <h1>
+              Bất ngờ: Apple chỉ cam kết 5 năm cập nhật phần mềm cho iPhone 15
+              Pro Max?
+            </h1>
+            <div class="author-info">
+              <img
+                src="bao.webp"
+                alt="Nguyễn Trọng Đức Nguyên"
+                class="author-image"
+              />
+              <div>
+                <p>Nguyễn Trọng Đức Nguyên</p>
+                <p>Ngày đăng: 01/07/2024 - Cập nhật: 02/07/2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="post-content">
+          <p>
+            <strong>iPhone 15 Pro Max</strong> là mẫu smartphone cao cấp mới
+            nhất của Apple, mang đến những cải tiến vượt bậc về cả thiết kế và
+            hiệu năng.
+          </p>
+          <p>
+            Apple xác nhận sẽ cập nhật phần mềm cho iPhone 15 Series trong tối
+            thiểu 5 năm, ít hơn những gì Samsung và Google cam kết với điện
+            thoại Android. Apple luôn được biết đến với khả năng cập nhật phần
+            mềm lâu dài cho iPhone, nhưng công ty chưa bao giờ cam kết chính
+            thức rằng khoảng thời gian đó sẽ là bao lâu. Điều này rất khác biệt
+            với Android, nơi các nhà sản xuất đều công bố khoảng thời gian hỗ
+            trợ cụ thể, trong đó Samsung và Google đang dẫn đầu với 7 năm. Tuy
+            nhiên, từ ngày 29/4, quy định về Bảo mật Sản phẩm và Hạ tầng Viễn
+            thông (PSTI) của Vương quốc Anh đã có hiệu lực. Quy định này buộc
+            các công ty sản xuất, nhập khẩu hoặc phân phối các sản phẩm có khả
+            năng kết nối internet tại Vương quốc Anh phải tuân thủ các yêu cầu
+            bảo mật nhất định. Các công ty bị ảnh hưởng bởi quy định này phải
+            cung cấp các tuyên bố tuân thủ, bao gồm khoảng thời gian cung cấp
+            các bản cập nhật bảo mật.
+          </p>
+          <img
+            src="danh-gia-iphone-15-pro-max-33.jpg"
+            alt="iPhone 15 Pro Max"
+          />
+          <p>
+            Vì iPhone là sản phẩm có khả năng kết nối internet, Apple buộc phải
+            tuân thủ quy định PSTI của Vương quốc Anh. Công ty mới đây đã công
+            bố tuyên bố tuân thủ cho iPhone 15 Pro Max, qua đó xác nhận "thời
+            gian hỗ trợ xác định" của thiết bị là "tối thiểu 5 năm kể từ ngày
+            cung cấp đầu tiên". "Ngày cung cấp đầu tiên" được xác định là ngày
+            22/09/2023, tức là ngày dòng iPhone 15 được bán ra. Theo PSTI, "thời
+            gian hỗ trợ xác định" là "thời gian tối thiểu, được biểu thị dưới
+            dạng khoảng thời gian có ngày kết thúc, trong đó các bản cập nhật
+            bảo mật sẽ được cung cấp". Trong khi đó, "bản cập nhật bảo mật" được
+            định nghĩa bởi PSTI là "bản cập nhật phần mềm bảo vệ hoặc tăng cường
+            bảo mật của sản phẩm, bao gồm cả bản cập nhật phần mềm giải quyết
+            các vấn đề bảo mật đã được nhà sản xuất phát hiện hoặc báo cáo".
+          </p>
+          <img
+            src="danh-gia-iphone-15-pro-max-23.jpg"
+            alt="iPhone 15 Pro Max in hand"
+          />
+          <p>
+            Đầu tiên, về thiết kế, chiếc iPhone 15 Pro Max vẫn giữ được nét sang
+            trọng với khung viền thép không gỉ và mặt lưng kính. Sự kết hợp giữa
+            các vật liệu cao cấp này mang lại cảm giác cầm nắm chắc chắn và đẳng
+            cấp.
+          </p>
+          <img
+            src="danh-gia-iphone-15-pro-max-1.jpg"
+            alt="iPhone 15 Pro Max design"
+          />
+          <p>
+            Về hiệu năng, iPhone 15 Pro Max được trang bị chip A18 Bionic mạnh
+            mẽ, xử lý tốt mọi tác vụ từ lướt web, xem phim đến chơi game 3D và
+            chỉnh sửa video một cách mượt mà. Nhiệt độ máy cũng được kiểm soát
+            tốt hơn, giúp trải nghiệm sử dụng trở nên thoải mái hơn.
+          </p>
+          <img
+            src="danh-gia-iphone-15-pro-max-43.jpg"
+            alt="iPhone 15 Pro Max performance"
+          />
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p>Review Sản Phẩm Công Nghệ</p>
+    </footer>
+  </body>
+</html>

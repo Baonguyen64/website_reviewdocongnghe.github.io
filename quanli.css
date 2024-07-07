@@ -1,0 +1,266 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+div {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+textarea {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #020080;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #020080;
+}
+
+button:active {
+    background-color: #020080;
+}
+
+button:not(:first-child) {
+    margin-left: 10px;
+}
+
+button:last-child {
+    float: right;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d5edff;
+    display: flex;
+    flex-direction: column;
+}
+.navbar {
+    background-color: #004a82;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.navbar h1 {
+    margin: 0;
+}
+.navbar input[type="text"] {
+    padding: 5px;
+    width: 300px;
+}
+.navbar ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.navbar ul li {
+    margin: 0;
+}
+.navbar ul li a {
+    padding: 5px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+.main-content {
+    display: flex;
+    width: 100%;
+}
+.sidebar-menu {
+    width: 20%;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+.sidebar-menu h2 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar-menu li {
+    margin-bottom: 10px;
+}
+.sidebar-menu li a {
+    color: #004a82;
+    text-decoration: none;
+    font-size: 1em;
+}
+.sidebar-menu li a:hover {
+    text-decoration: underline;
+}
+.container {
+    padding: 20px;
+    flex: 1;
+}
+.section-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+.reviews, .products {
+    display: flex;
+    flex-wrap: wrap;
+}
+.review-item, .product-item {
+    background-color: #ff0000;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 200 150 calc(75% - 70px); /* Thay đổi độ rộng và margin theo ý muốn */
+    box-sizing: border-box;
+}
+
+.review-item img, .product-item img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+.review-item h2, .product-item h2 {
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+}
+.review-item p, .product-item p {
+    font-size: 0.9em;
+    color: #666;
+}
+.footer p {
+    color: #004a82;
+    width: 100%;
+    height: 30px;
+}
+.footer {
+    background-color: #004a82;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer p {
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    justify-content: center;
+}
+#baiviet-list {
+margin-top: 20px;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around; 
+}
+
+#baiviet-list > div {
+background-color: #ff7676;
+border: 1px solid #ffffff;
+border-radius: 10px;
+padding: 15px;
+margin-bottom: 20px;
+max-width: 100%; 
+height: auto; 
+box-sizing: border-box;
+}
+
+
+#baiviet-list img {
+max-width: 100%;
+border-radius: 5px;
+margin-top: 10px;
+}
+
+#baiviet-list button {
+background-color: #004a82;
+color: #ffffff;
+border: none;
+padding: 8px 16px;
+cursor: pointer;
+margin-top: 10px;
+border-radius: 5px;
+}
+
+#baiviet-list button:hover {
+background-color: #003b6b;
+}
+/* Hiệu ứng cho các mục chính của menu */
+.navbar ul li a:hover {
+    color: #ffb8b8; /* Màu sắc khi di chuột vào */
+    font-weight: bold; /* Làm nổi bật chữ */
+    background-color: #004a82; /* Đổi màu nền */
+}
+
+/* Cài đặt cho menu thả xuống */
+.navbar ul li ul {
+    display: none;
+    position: absolute;
+    background-color: #004a82;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.navbar ul li:hover ul {
+    display: block;
+}
+
+/* Cài đặt cho các mục trong menu thả xuống */
+.navbar ul li ul li {
+    width: 200px; /* Đặt chiều rộng cho menu thả xuống */
+}
+
+.navbar ul li ul li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    background-color: #004a82; /* Màu nền của mục menu thả xuống */
+}
+
+.navbar ul li ul li a:hover {
+    background-color: #003b6b; /* Màu nền khi di chuột vào mục menu thả xuống */
+    color: #ffb8b8; /* Màu chữ khi di chuột vào */
+}

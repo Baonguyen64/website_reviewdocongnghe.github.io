@@ -1,0 +1,61 @@
+{
+  "sanpham": [
+    {
+      "id": "123",
+      "SanPham": "LAPTOP GAMING",
+      "maSp": "123",
+      "ngaySX": "12/12/2012",
+      "mota": "Hiện đang là dòng máy đời mới nhất",
+      "gia": "18000000Vnđ",
+      "hinhAnh": [
+        "https://hoanghapc.vn/media/news/2010_goc-gaming-dep61.jpg"
+      ]
+    },
+    {
+      "id": "",
+      "SanPham": "",
+      "maSp": "",
+      "ngaySX": "",
+      "mota": "",
+      "gia": "",
+      "hinhAnh": []
+    },
+    {
+      "id": "9835",
+      "Sanpham": "A",
+      "maSP": "123",
+      "ngaySX": "1010-10-10",
+      "mota": "AAAAAAAAAAA",
+      "gia": "1234567",
+      "hinhAnh": [
+        "AAAAAA"
+      ]
+    }
+  ],
+  "baiviet": [
+    {
+      "nguoidang": "Nguyễn Văn A",
+      "sdt": "123456789",
+      "diachi": "Phố Xốm-Hà Đông-Hà Nội",
+      "email": "a@gmail.com",
+      "tieude": "Review sản phẩm công nghệ",
+      "noidung": "Đây là sản phẩm mới nhất của công ty chúng tôi",
+      "ngaydang": "",
+      "Hinhanh": [
+        "https://tse1.mm.bing.net/th?id=OIP.87u_vxqyptRhHnubxivNOQHaEe&pid=Api&P=0&h=180"
+      ],
+      "id": "3d47"
+    },
+    {
+      "id": "3edc",
+      "nguoidang": "e",
+      "sdt": "2",
+      "diachi": "d",
+      "email": "d",
+      "ngaydang": "1212-12-12",
+      "tieude": "d",
+      "noidung": "d",
+      "Hinhanh": "dddd"
+    }
+  ]
+}
